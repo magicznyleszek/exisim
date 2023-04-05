@@ -49,6 +49,7 @@ describe("game balance", () => {
     let totalExtinct = 0;
     let totalSafe = 0;
 
+    // Simulate 100 runs of the game (time consuming!)
     for (let i = 0; i < 100; i++) {
       const humanExistence = new Existence(50000, false);
       while (

@@ -13,3 +13,7 @@ Thumbs.db
 .cache
 dev
 public
+
+# Misc
+*sublime-*
+.sass-cache

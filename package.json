@@ -20,16 +20,21 @@
     "copy-static-files": "cp humans.txt LICENSE manifest.json robots.txt sitemap.xml source/favicons/exisim-logo.svg public"
   },
   "devDependencies": {
-    "@types/jest": "^25.2.2",
-    "@types/lodash": "^4.14.151",
-    "@types/mixpanel-browser": "^2.35.3",
-    "jest": "^26.0.1",
-    "mixpanel-browser": "^2.37.0",
-    "parcel-bundler": "^1.12.4",
+    "@types/jest": "^29.5.0",
+    "@types/lodash": "^4.14.192",
+    "@types/mixpanel-browser": "^2.38.1",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "mixpanel-browser": "^2.46.0",
+    "parcel-bundler": "^1.8.1",
     "parcel-plugin-svg-sprite": "^1.4.1",
-    "prettier": "^2.0.5",
-    "ts-jest": "^26.0.0",
-    "typescript": "^3.9.2"
+    "prettier": "^2.8.7",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.3"
   },
   "svgSpriteOptions": {
     "include": [
@@ -37,6 +42,7 @@
     ]
   },
   "jest": {
+    "testEnvironment": "jsdom",
     "collectCoverage": true,
     "coverageThreshold": {
       "global": {
