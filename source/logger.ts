@@ -1,12 +1,12 @@
-import { simulationYearTime } from "./common";
-import { IncidentName, listen } from "./incidents";
+import {simulationYearTime} from "./common";
+import {IncidentName, listen} from "./incidents";
 
 class Logger {
   public output: HTMLElement | null = null;
-  private scrollingTimeoutId: number = 0;
-  private rowHeight: number = 0;
+  private scrollingTimeoutId = 0;
+  private rowHeight = 0;
   // flag to make sure it scrolls to end at the beginnig (bug on small screens)
-  private isFirstTime: boolean = true;
+  private isFirstTime = true;
   private readonly isPlayingClassName: string = "is-playing";
   private readonly isOverClassName: string = "is-over";
   private readonly isScrollingClassName: string = "is-scrolling";
@@ -17,7 +17,7 @@ class Logger {
   }
 
   // adds given message to the body in new line
-  public log(message: string, withScroll: boolean = true): void {
+  public log(message: string, withScroll = true): void {
     this.verifyOutput();
     if (this.output) {
       // insertAdjacentHTML plus appendChild is fastest:
@@ -34,8 +34,7 @@ class Logger {
 
   private scrollToEnd(): void {
     if (
-      this.output &&
-      this.output.scrollIntoView &&
+      this.output?.scrollIntoView &&
       // autoscroll if scrolled to almost end of page
       (this.isNearEnd() || this.isFirstTime)
     ) {

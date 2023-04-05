@@ -1,4 +1,4 @@
-import { generator } from "./generator";
+import {generator} from "./generator";
 
 describe("generator", () => {
   it("should return random number evenly", () => {

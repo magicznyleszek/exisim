@@ -1,9 +1,5 @@
-import {
-  CatastrophePersistence,
-  Catastrophes,
-  PopulationStatus,
-} from "./common";
-import { Existence } from "./existence";
+import {CatastrophePersistence, Catastrophes, PopulationStatus} from "./common";
+import {Existence} from "./existence";
 
 interface IAverageCatastrophe {
   killMax: number;

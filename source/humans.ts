@@ -1,5 +1,5 @@
-import { generator } from "./generator";
-import { Human } from "./human";
+import {generator} from "./generator";
+import {Human} from "./human";
 
 export class Humans {
   private population: Human[] = [];
@@ -25,9 +25,8 @@ export class Humans {
       this.population = [];
     } else {
       for (let i = killCount; i >= 0; i--) {
-        this.population[this.getRandomIndex()] = this.population[
-          this.population.length - 1
-        ];
+        this.population[this.getRandomIndex()] =
+          this.population[this.population.length - 1];
         this.population.pop();
       }
     }
@@ -38,9 +37,9 @@ export class Humans {
   public buryDead(): number {
     const populationCountBefore = this.getTotalCount();
     // keep only alive people in population
-    this.population = this.population.filter((human: Human): boolean => {
-      return human.isAlive;
-    });
+    this.population = this.population.filter(
+      (human: Human): boolean => human.isAlive
+    );
     return populationCountBefore - this.getTotalCount();
   }
 

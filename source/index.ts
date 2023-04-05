@@ -1,6 +1,7 @@
-import { Existence } from "./existence";
-import { Stats, stats } from "./stats";
-import { Tracker } from "./tracker";
+import {Existence} from "./existence";
+import type {Stats} from "./stats";
+import {stats} from "./stats";
+import {Tracker} from "./tracker";
 
 declare global {
   interface Window {

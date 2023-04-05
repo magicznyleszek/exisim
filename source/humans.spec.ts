@@ -1,4 +1,4 @@
-import { Humans } from "./humans";
+import {Humans} from "./humans";
 
 describe("Humans", () => {
   it("should create initial population", () => {

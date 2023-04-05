@@ -1,4 +1,4 @@
-import { CatastropheName, getCatastrophe } from "./common";
+import {CatastropheName, getCatastrophe} from "./common";
 
 describe("common", () => {
   it("should be able to return a catastrophe", () => {

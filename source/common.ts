@@ -26,7 +26,7 @@ export interface ICatastrophe {
   name: CatastropheName;
 }
 
-export const CatastrophePersistence: number = 50;
+export const CatastrophePersistence = 50;
 
 export enum CatastropheName {
   Climate = "climate-warming",
@@ -131,11 +131,7 @@ export const Catastrophes: ICatastrophe[] = [
 ];
 
 export function getCatastrophe(name: CatastropheName): ICatastrophe | null {
-  return (
-    Catastrophes.find((catastrophe) => {
-      return catastrophe.name === name;
-    }) || null
-  );
+  return Catastrophes.find((catastrophe) => catastrophe.name === name) || null;
 }
 
 export function isYearMillenium(year: number): boolean {

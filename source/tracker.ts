@@ -1,8 +1,9 @@
 import mixpanel from "mixpanel-browser";
 import * as pack from "../package.json";
-import { CatastropheName, PopulationStatus } from "./common";
-import { IGameOverIncidentData, IncidentName, listen } from "./incidents";
-import { stats } from "./stats";
+import type {CatastropheName, PopulationStatus} from "./common";
+import type {IGameOverIncidentData} from "./incidents";
+import {IncidentName, listen} from "./incidents";
+import {stats} from "./stats";
 
 enum EventId {
   GameOver = "gameover",
@@ -23,7 +24,6 @@ export class Tracker {
     mixpanel.init("b70e3845346d947336c4d57f05e75268", {
       disable_persistence: true,
       ip: false,
-      track_pageview: false,
     });
     listen(IncidentName.GameOver, this.onGameOver.bind(this));
   }

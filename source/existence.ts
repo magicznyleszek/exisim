@@ -1,28 +1,28 @@
+import type {ICatastrophe} from "./common";
 import {
   CatastrophePersistence,
   Catastrophes,
-  ICatastrophe,
   isYearMillenium,
   PopulationStatus,
   simulationYearTime,
 } from "./common";
-import { generator } from "./generator";
-import { Humans } from "./humans";
+import {generator} from "./generator";
+import {Humans} from "./humans";
 import death from "./icons/death.svg";
 import life from "./icons/life.svg";
 import skull from "./icons/skull.svg";
-import { IncidentName, publish } from "./incidents";
-import { logger } from "./logger";
-import { stats } from "./stats";
+import {IncidentName, publish} from "./incidents";
+import {logger} from "./logger";
+import {stats} from "./stats";
 
 export class Existence {
   // https://en.wikipedia.org/wiki/Minimum_viable_population
   private readonly initialPopulation: number = 4169;
-  private currentYear: number = 0;
+  private currentYear = 0;
   private humans: Humans;
-  private isLoggingEnabled: boolean = false;
+  private isLoggingEnabled = false;
   private lastYearCatastrophe: ICatastrophe | null = null;
-  private lifeIntervalId: number = 0;
+  private lifeIntervalId = 0;
   private targetPopulation: number;
 
   public constructor(targetPopulation: number, enableLogging: boolean) {
@@ -104,7 +104,7 @@ export class Existence {
     catastrophe: ICatastrophe | null,
     deadCount: number
   ): void {
-    const messageParts: any[] = [];
+    const messageParts: string[] = [];
 
     // born count
     messageParts.push(`<svg><use xlink:href="${life}"/></svg>${bornCount}`);
@@ -151,8 +151,7 @@ export class Existence {
   // kills % of population (if happens)
   private checkForCatastrophe(): ICatastrophe | null {
     if (
-      this.lastYearCatastrophe !== null &&
-      this.lastYearCatastrophe.isPersistent &&
+      this.lastYearCatastrophe?.isPersistent &&
       CatastrophePersistence >= generator.getRandomPercent()
     ) {
       // a persistent catastrophe can last multiple years
@@ -196,7 +195,7 @@ export class Existence {
 
   private gameOver(): void {
     const status = this.getPopulationStatus();
-    publish(IncidentName.GameOver, { status, year: this.currentYear });
+    publish(IncidentName.GameOver, {status, year: this.currentYear});
 
     if (this.isLoggingEnabled) {
       const allStats = stats.getAll();

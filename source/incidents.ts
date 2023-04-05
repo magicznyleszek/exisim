@@ -1,4 +1,4 @@
-import { ICatastrophe, PopulationStatus } from "./common";
+import type {ICatastrophe, PopulationStatus} from "./common";
 
 export interface ICatastropheIncidentData {
   catastrophe: ICatastrophe | null;
@@ -25,7 +25,7 @@ type IncidentData =
   | IGameOverIncidentData
   | IPopulationIncidentData;
 
-export function listen(name: IncidentName, callback: any): () => void {
+export function listen(name: IncidentName, callback: () => void): () => void {
   document.addEventListener(name, callback);
   // return cancel function
   return () => {
@@ -34,7 +34,5 @@ export function listen(name: IncidentName, callback: any): () => void {
 }
 
 export function publish(name: IncidentName, data: IncidentData) {
-  document.dispatchEvent(
-    new CustomEvent<IncidentData>(name, { detail: data })
-  );
+  document.dispatchEvent(new CustomEvent<IncidentData>(name, {detail: data}));
 }

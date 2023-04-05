@@ -1,6 +1,6 @@
-import { CatastropheName, getCatastrophe } from "./common";
-import { IncidentName, publish } from "./incidents";
-import { stats } from "./stats";
+import {CatastropheName, getCatastrophe} from "./common";
+import {IncidentName, publish} from "./incidents";
+import {stats} from "./stats";
 
 describe("stats", () => {
   beforeEach(() => {
@@ -52,16 +52,16 @@ describe("stats", () => {
   });
 
   it("should store highest and lowest population", () => {
-    publish(IncidentName.Population, { count: 1000 });
+    publish(IncidentName.Population, {count: 1000});
     expect(stats.getAll().highestPopulation).toBe(1000);
     expect(stats.getAll().lowestPopulation).toBe(1000);
-    publish(IncidentName.Population, { count: 5000 });
+    publish(IncidentName.Population, {count: 5000});
     expect(stats.getAll().highestPopulation).toBe(5000);
     expect(stats.getAll().lowestPopulation).toBe(1000);
-    publish(IncidentName.Population, { count: 4000 });
+    publish(IncidentName.Population, {count: 4000});
     expect(stats.getAll().highestPopulation).toBe(5000);
     expect(stats.getAll().lowestPopulation).toBe(1000);
-    publish(IncidentName.Population, { count: 200 });
+    publish(IncidentName.Population, {count: 200});
     expect(stats.getAll().highestPopulation).toBe(5000);
     expect(stats.getAll().lowestPopulation).toBe(200);
   });

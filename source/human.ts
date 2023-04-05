@@ -1,4 +1,4 @@
-import { generator } from "./generator";
+import {generator} from "./generator";
 
 export class Human {
   // https://menstrual-cycle-calculator.com/chance-pregnant-unprotected-sex/
@@ -24,9 +24,9 @@ export class Human {
     }
   }
 
-  public age: number = 0;
-  public isAdult: boolean = false;
-  public isAlive: boolean = true;
+  public age = 0;
+  public isAdult = false;
+  public isAlive = true;
   public name: string;
   public lifespan: number;
 

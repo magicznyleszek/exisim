@@ -1,17 +1,16 @@
+import type {ICatastrophe} from "./common";
 import {
   CatastropheName,
   Catastrophes,
-  ICatastrophe,
   isYearMillenium,
   PopulationStatus,
 } from "./common";
-import {
+import type {
   ICatastropheIncidentData,
   IGameOverIncidentData,
-  IncidentName,
   IPopulationIncidentData,
-  listen,
 } from "./incidents";
+import {IncidentName, listen} from "./incidents";
 
 enum Achievement {
   // A catastrophe that happened on a millenium.
@@ -83,11 +82,11 @@ export class Stats {
     "volcano-eruption": 0,
     war: 0,
   };
-  private catastrophesCountSum: number = 0;
-  private consecutiveCatastropheYears: number = 0;
-  private consecutiveFreeYears: number = 0;
-  private highestPopulation: number = 0;
-  private lowestPopulation: number = Infinity;
+  private catastrophesCountSum = 0;
+  private consecutiveCatastropheYears = 0;
+  private consecutiveFreeYears = 0;
+  private highestPopulation = 0;
+  private lowestPopulation = Infinity;
 
   public constructor() {
     Catastrophes.forEach((catastrophe: ICatastrophe) => {
