@@ -60,7 +60,8 @@ export const Catastrophes: Catastrophe[] = [
   {
     // https://en.wikipedia.org/wiki/List_of_natural_disasters_by_death_toll
     icon: drought,
-    killMax: 28,
+    isPersistent: true,
+    killMax: 20,
     killMin: 10,
     name: CatastropheName.Drought,
   },
@@ -78,10 +79,13 @@ export const Catastrophes: Catastrophe[] = [
     name: CatastropheName.Flood,
   },
   {
+    // I don't have anything to base this on, so I decided this would be as bad
+    // as minimum of flood (direct deaths caused by prolonged harsh weather) and
+    // maximum of drought (crops dying due to low temperatures).
     icon: ice,
     isPersistent: true,
-    killMax: 33,
-    killMin: 11,
+    killMax: 20,
+    killMin: 3,
     name: CatastropheName.Ice,
   },
   {
@@ -93,7 +97,14 @@ export const Catastrophes: Catastrophe[] = [
   },
   {
     // https://en.wikipedia.org/wiki/Black_Death
-    // Black Death killed around 26% of world population
+    // Black Death of bubonic plague killed around 26% of world population (50%
+    // in the region)
+    // https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2730237/
+    // The epidemic of cocoliztli killed around 80% of the native population of
+    // Mexico in the wake of European conquest. This happened immediately after
+    // the smallpox epidemic that killed around 8 million people.
+    // Given that, I decided to base this catastrophe on bubonic plague alone,
+    // as the next catastrophe will partially address the horrors of Mexico.
     icon: plague,
     isPersistent: true,
     killMax: 26,
@@ -105,7 +116,7 @@ export const Catastrophes: Catastrophe[] = [
     // https://en.wikipedia.org/wiki/Indigenous_peoples_of_the_Americas
     // https://en.wikipedia.org/wiki/Population_history_of_indigenous_peoples_of_the_Americas
     // Colonization killed as much as 80-90% of indigenous population
-    // so I estimated it as 10% of world population and blame Christians
+    // so I estimated it as 10% of world population and blamed Christians
     icon: religion,
     isPersistent: true,
     killMax: 10,

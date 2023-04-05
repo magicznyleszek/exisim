@@ -25,7 +25,10 @@ type IncidentData =
   | GameOverIncidentData
   | PopulationIncidentData;
 
-export function listen(name: IncidentName, callback: (evt: CustomEvent) => void): () => void {
+export function listen(
+  name: IncidentName,
+  callback: (evt: CustomEvent) => void
+): () => void {
   document.addEventListener(name, callback as EventListener);
   // return cancel function
   return () => {

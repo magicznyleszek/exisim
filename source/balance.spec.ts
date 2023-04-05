@@ -47,7 +47,7 @@ describe("game balance", () => {
 
     // Simulate 100 runs of the game (time consuming!)
     for (let i = 0; i < 100; i++) {
-      const humanExistence = new Existence(50000, false);
+      const humanExistence = new Existence(100000, false);
       while (
         humanExistence.getPopulationStatus() === PopulationStatus.Struggling
       ) {
@@ -62,7 +62,7 @@ describe("game balance", () => {
       }
     }
 
-    expect(totalExtinct).toBeGreaterThanOrEqual(70);
-    expect(totalSafe).toBeGreaterThanOrEqual(15);
+    expect(totalExtinct).toBeGreaterThanOrEqual(60);
+    expect(totalSafe).toBeGreaterThanOrEqual(10);
   });
 });
