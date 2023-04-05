@@ -1,4 +1,4 @@
-import type {ICatastrophe} from "./common";
+import type {Catastrophe} from "./common";
 import {
   CatastrophePersistence,
   Catastrophes,
@@ -21,7 +21,7 @@ export class Existence {
   private currentYear = 0;
   private humans: Humans;
   private isLoggingEnabled = false;
-  private lastYearCatastrophe: ICatastrophe | null = null;
+  private lastYearCatastrophe: Catastrophe | null = null;
   private lifeIntervalId = 0;
   private targetPopulation: number;
 
@@ -95,13 +95,13 @@ export class Existence {
     }
   }
 
-  public getRandomCatastrophe(): ICatastrophe {
+  public getRandomCatastrophe(): Catastrophe {
     return Catastrophes[generator.getRandomNumber(0, Catastrophes.length - 1)];
   }
 
   private logYear(
     bornCount: number,
-    catastrophe: ICatastrophe | null,
+    catastrophe: Catastrophe | null,
     deadCount: number
   ): void {
     const messageParts: string[] = [];
@@ -149,7 +149,7 @@ export class Existence {
   }
 
   // kills % of population (if happens)
-  private checkForCatastrophe(): ICatastrophe | null {
+  private checkForCatastrophe(): Catastrophe | null {
     if (
       this.lastYearCatastrophe?.isPersistent &&
       CatastrophePersistence >= generator.getRandomPercent()
@@ -168,7 +168,7 @@ export class Existence {
   }
 
   // drops a catastrophe upon the population
-  private applyCatastrophe(catastrophe: ICatastrophe): void {
+  private applyCatastrophe(catastrophe: Catastrophe): void {
     const killPercentage = generator.getRandomNumber(
       catastrophe.killMin,
       catastrophe.killMax

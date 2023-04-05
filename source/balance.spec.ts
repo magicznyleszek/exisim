@@ -1,12 +1,12 @@
 import {CatastrophePersistence, Catastrophes, PopulationStatus} from "./common";
 import {Existence} from "./existence";
 
-interface IAverageCatastrophe {
+interface AverageCatastrophe {
   killMax: number;
   killMin: number;
 }
 
-function getAverageCatastrophe(): IAverageCatastrophe {
+function getAverageCatastrophe(): AverageCatastrophe {
   const mins: number[] = [];
   const maxs: number[] = [];
   Catastrophes.forEach((catastrophe) => {
@@ -41,7 +41,7 @@ describe("game balance", () => {
     expect(averageCatastrophe.killMax).toBeLessThanOrEqual(24);
   });
 
-  it("should kill all humans in most cases using all catastrophes", () => {
+  it("should eradicate humans in majority, but not all, of runs", () => {
     let totalExtinct = 0;
     let totalSafe = 0;
 

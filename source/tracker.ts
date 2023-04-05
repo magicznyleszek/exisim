@@ -1,7 +1,7 @@
 import mixpanel from "mixpanel-browser";
 import * as pack from "../package.json";
 import type {CatastropheName, PopulationStatus} from "./common";
-import type {IGameOverIncidentData} from "./incidents";
+import type {GameOverIncidentData} from "./incidents";
 import {IncidentName, listen} from "./incidents";
 import {stats} from "./stats";
 
@@ -9,7 +9,7 @@ enum EventId {
   GameOver = "gameover",
 }
 
-interface IGameOverData {
+interface GameOverData {
   populationMax: number;
   populationMin: number;
   status: PopulationStatus;
@@ -28,7 +28,7 @@ export class Tracker {
     listen(IncidentName.GameOver, this.onGameOver.bind(this));
   }
 
-  private onGameOver(evt: CustomEvent<IGameOverIncidentData>) {
+  private onGameOver(evt: CustomEvent<GameOverIncidentData>) {
     const allStats = stats.getAll();
     this.trackEvent(EventId.GameOver, {
       populationMax: allStats.highestPopulation,
@@ -40,7 +40,7 @@ export class Tracker {
     });
   }
 
-  private trackEvent(id: string, data: IGameOverData): void {
+  private trackEvent(id: string, data: GameOverData): void {
     // always include game version
     data.version = pack.version;
     mixpanel.track(id, data);

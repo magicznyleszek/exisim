@@ -18,7 +18,7 @@ export enum PopulationStatus {
   Struggling = "struggling",
 }
 
-export interface ICatastrophe {
+export interface Catastrophe {
   icon: string;
   isPersistent?: boolean;
   killMax: number;
@@ -42,7 +42,7 @@ export enum CatastropheName {
   War = "war",
 }
 
-export const Catastrophes: ICatastrophe[] = [
+export const Catastrophes: Catastrophe[] = [
   {
     // http://www.impactlab.org/news-insights/valuing-climate-change-mortality/
     icon: climate,
@@ -130,7 +130,7 @@ export const Catastrophes: ICatastrophe[] = [
   },
 ];
 
-export function getCatastrophe(name: CatastropheName): ICatastrophe | null {
+export function getCatastrophe(name: CatastropheName): Catastrophe | null {
   return Catastrophes.find((catastrophe) => catastrophe.name === name) || null;
 }
 

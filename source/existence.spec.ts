@@ -3,7 +3,7 @@ import {Existence} from "./existence";
 import {logger} from "./logger";
 
 describe("Existence", () => {
-  it("should be able to randomly return every catastrophe", () => {
+  it("should be able to randomly return each catastrophe", () => {
     const humanExistence = new Existence(9999, false);
     const catastrophesCount: {[p in CatastropheName]: number} = {
       [CatastropheName.Climate]: 0,

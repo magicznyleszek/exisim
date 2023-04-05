@@ -1,14 +1,14 @@
-import type {ICatastrophe, PopulationStatus} from "./common";
+import type {Catastrophe, PopulationStatus} from "./common";
 
-export interface ICatastropheIncidentData {
-  catastrophe: ICatastrophe | null;
+export interface CatastropheIncidentData {
+  catastrophe: Catastrophe | null;
   year: number;
 }
-export interface IGameOverIncidentData {
+export interface GameOverIncidentData {
   status: PopulationStatus;
   year: number;
 }
-export interface IPopulationIncidentData {
+export interface PopulationIncidentData {
   count: number;
 }
 
@@ -20,16 +20,16 @@ export enum IncidentName {
 }
 
 type IncidentData =
-  | ICatastropheIncidentData
+  | CatastropheIncidentData
   | null
-  | IGameOverIncidentData
-  | IPopulationIncidentData;
+  | GameOverIncidentData
+  | PopulationIncidentData;
 
-export function listen(name: IncidentName, callback: () => void): () => void {
-  document.addEventListener(name, callback);
+export function listen(name: IncidentName, callback: (evt: CustomEvent) => void): () => void {
+  document.addEventListener(name, callback as EventListener);
   // return cancel function
   return () => {
-    document.removeEventListener(name, callback);
+    document.removeEventListener(name, callback as EventListener);
   };
 }
 

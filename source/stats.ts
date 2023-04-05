@@ -1,4 +1,4 @@
-import type {ICatastrophe} from "./common";
+import type {Catastrophe} from "./common";
 import {
   CatastropheName,
   Catastrophes,
@@ -6,9 +6,9 @@ import {
   PopulationStatus,
 } from "./common";
 import type {
-  ICatastropheIncidentData,
-  IGameOverIncidentData,
-  IPopulationIncidentData,
+  CatastropheIncidentData,
+  GameOverIncidentData,
+  PopulationIncidentData,
 } from "./incidents";
 import {IncidentName, listen} from "./incidents";
 
@@ -54,7 +54,7 @@ const TopCatastropheMap = new Map([
   [CatastropheName.War, Achievement.TopCatastropheWar],
 ]);
 
-interface IAllStats {
+interface AllStats {
   achievements: string[];
   catastrophesCount: ICatastrophesCount;
   catastrophesCountSum: number;
@@ -89,7 +89,7 @@ export class Stats {
   private lowestPopulation = Infinity;
 
   public constructor() {
-    Catastrophes.forEach((catastrophe: ICatastrophe) => {
+    Catastrophes.forEach((catastrophe: Catastrophe) => {
       this.catastrophesCount[catastrophe.name] = 0;
     });
     listen(IncidentName.Catastrophe, this.onCatastrophe.bind(this));
@@ -97,7 +97,7 @@ export class Stats {
     listen(IncidentName.GameOver, this.onGameOver.bind(this));
   }
 
-  public getAll(): IAllStats {
+  public getAll(): AllStats {
     const topCatastrophe = this.getTopCatastrophe();
     let topCatastropheName = CatastropheName.War;
     if (topCatastrophe !== null) {
@@ -126,10 +126,10 @@ export class Stats {
     }
   }
 
-  public getTopCatastrophe(): ICatastrophe | null {
-    let top: ICatastrophe | null = null;
+  public getTopCatastrophe(): Catastrophe | null {
+    let top: Catastrophe | null = null;
     let topCount = -1;
-    Catastrophes.forEach((catastrophe: ICatastrophe) => {
+    Catastrophes.forEach((catastrophe: Catastrophe) => {
       if (this.catastrophesCount[catastrophe.name] > topCount) {
         topCount = this.catastrophesCount[catastrophe.name];
         top = catastrophe;
@@ -139,7 +139,7 @@ export class Stats {
   }
 
   public clear(): void {
-    Catastrophes.forEach((catastrophe: ICatastrophe) => {
+    Catastrophes.forEach((catastrophe: Catastrophe) => {
       this.catastrophesCount[catastrophe.name] = 0;
     });
     this.catastrophesCountSum = 0;
@@ -148,7 +148,7 @@ export class Stats {
   }
 
   // handles consecutiveCatastropheYears and counting catastrophes
-  private onCatastrophe(evt: CustomEvent<ICatastropheIncidentData>): void {
+  private onCatastrophe(evt: CustomEvent<CatastropheIncidentData>): void {
     if (evt.detail.catastrophe === null) {
       this.consecutiveCatastropheYears = 0;
       this.consecutiveFreeYears++;
@@ -171,12 +171,12 @@ export class Stats {
     }
   }
 
-  private onPopulation(evt: CustomEvent<IPopulationIncidentData>): void {
+  private onPopulation(evt: CustomEvent<PopulationIncidentData>): void {
     this.highestPopulation = Math.max(this.highestPopulation, evt.detail.count);
     this.lowestPopulation = Math.min(this.lowestPopulation, evt.detail.count);
   }
 
-  private onGameOver(evt: CustomEvent<IGameOverIncidentData>) {
+  private onGameOver(evt: CustomEvent<GameOverIncidentData>) {
     if (evt.detail.status === PopulationStatus.Extinct) {
       if (evt.detail.year <= 500) {
         this.achievements.add(Achievement.ExtinctQuick);
