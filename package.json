@@ -1,10 +1,11 @@
 {
   "name": "exisim",
-  "version": "3.9.2",
+  "version": "4.0.0",
+  "browserslist": "> 1%, last 2 versions, not dead",
   "description": "Partially scientific zero-player human existence simulator",
   "author": {
-    "name": "Leszek Pietrzak",
-    "email": "leszek@magicznyleszek.xyz"
+    "name": "Zefir Efemera",
+    "email": "zefirefemera@proton.me"
   },
   "private": false,
   "homepage": "https://github.com/magicznyleszek/exisim",
@@ -15,8 +16,8 @@
     "test": "jest && npm run test-syntax",
     "test-syntax": "prettier --check source",
     "test-watch": "jest --watchAll",
-    "start": "parcel -p 2038 source/index.html -d dev",
-    "build-app": "rm -rf public && parcel build source/index.html -d public --public-url ./ --no-cache && npm run copy-static-files",
+    "start": "parcel -p 2038 source/index.html --dist-dir dev",
+    "build-app": "rm -rf public && parcel build source/index.html --dist-dir public --public-url ./ --no-cache && npm run copy-static-files",
     "copy-static-files": "cp humans.txt LICENSE manifest.json robots.txt sitemap.xml source/favicons/exisim-logo.svg public"
   },
   "devDependencies": {
@@ -30,16 +31,12 @@
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "mixpanel-browser": "^2.46.0",
-    "parcel-bundler": "^1.8.1",
-    "parcel-plugin-svg-sprite": "^1.4.1",
+    "parcel": "^2.12.0",
+    "parcel-packager-svg-sprite": "^2.0.1",
+    "parcel-transformer-svg-sprite": "^2.0.1",
     "prettier": "^2.8.7",
     "ts-jest": "^29.1.0",
     "typescript": "^5.0.3"
-  },
-  "svgSpriteOptions": {
-    "include": [
-      "source/icons/*"
-    ]
   },
   "jest": {
     "testEnvironment": "jsdom",
