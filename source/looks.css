@@ -28,7 +28,9 @@ html {
   line-height: var(--s-leading);
   color: var(--c-wood-bark);
   background: var(--c-pampas);
-  transition: color 0.5s, background 0.5s;
+  transition:
+    color 0.5s,
+    background 0.5s;
 }
 
 a {
@@ -169,7 +171,9 @@ body.is-scrolling #status-scrolling {
   display: block;
   cursor: pointer;
   visibility: hidden;
-  transition: opacity, visibility 1s;
+  transition:
+    opacity,
+    visibility 1s;
   opacity: 0;
   margin: 0 auto;
   padding: 0;
